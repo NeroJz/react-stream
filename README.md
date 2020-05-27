@@ -2,7 +2,7 @@
 
 Creating a ReactJS video streaming application
 
-# This project contains several applications:
+## This project contains several applications:
 
 - client
 
