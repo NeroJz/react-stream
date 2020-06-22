@@ -1,12 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
+
+const API_KEY = "AIzaSyAthC2h_xMKBwoYFb2hmTv-EbunOMBfWXI";
 
 // Create a new component.  This component should produce
 // some HTML
 const App = () => {
   return <div>Hi!</div>;
-}
+};
 
 // Take this component's generated HTML and put it
 // on the page (in the DOM)
-ReactDOM.render(<App />, document.querySelector('.container'));
+ReactDOM.render(<App />, document.querySelector(".container"));
