@@ -3,17 +3,29 @@ import { Field, reduxForm } from "redux-form";
 
 class PostsNew extends Component {
   renderField = (field) => {
+    const {
+      meta: { touched, error },
+    } = field;
+
+    const className = `form-control ${touched && error ? "is-invalid" : ""}`;
+
     return (
       <div className="form-group">
         <label>{field.label}</label>
-        <input className="form-control" type="text" {...field.input} />
+        <input className={className} type="text" {...field.input} />
+        <div className="text-danger">{touched ? error : ""}</div>
       </div>
     );
   };
 
+  onSubmit = (values) => {
+    console.log(values);
+  };
+
   render() {
+    const { handleSubmit } = this.props;
     return (
-      <form>
+      <form onSubmit={handleSubmit(this.onSubmit)}>
         <Field
           name="title"
           label="Title For Post"
@@ -29,6 +41,9 @@ class PostsNew extends Component {
           label="Post Content"
           component={this.renderField}
         />
+        <button type="submit" className="btn btn-primary">
+          Submit
+        </button>
       </form>
     );
   }
@@ -46,7 +61,7 @@ function validate(values) {
   }
 
   if (!values.content) {
-    errors.content = "Enter a content!";
+    errors.content = "Enter some contents please!";
   }
 
   return errors;
