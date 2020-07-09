@@ -5,7 +5,7 @@ const Search = () => {
   const [term, setTerm] = useState("");
   const [results, setResults] = useState([]);
 
-  console.log(results);
+  //   console.log(results);
 
   useEffect(() => {
     const search = async () => {
@@ -31,6 +31,17 @@ const Search = () => {
     setTerm(value);
   };
 
+  const renderedResults = results.map((result) => {
+    return (
+      <div className="item" key={result.pageid}>
+        <div className="content">
+          <div className="header">{result.title}</div>
+          <span dangerouslySetInnerHTML={{ __html: result.snippet }}></span>
+        </div>
+      </div>
+    );
+  });
+
   return (
     <div>
       <div className="ui form">
@@ -43,6 +54,7 @@ const Search = () => {
           />
         </div>
       </div>
+      <div className="ui celled list">{renderedResults}</div>
     </div>
   );
 };
