@@ -4,16 +4,20 @@ import Convert from "./Convert";
 
 const options = [
   {
-    label: "Afrikaans",
-    value: "af",
+    label: "Chinese (Simplified)",
+    value: "zh-CN",
   },
   {
-    label: "Arabic",
-    value: "ar",
+    label: "Chinese (Traditional)",
+    value: "zh-TW",
   },
   {
-    label: "Hindi",
-    value: "hi",
+    label: "Japanese",
+    value: "ja",
+  },
+  {
+    label: "Korean",
+    value: "ko",
   },
 ];
 
