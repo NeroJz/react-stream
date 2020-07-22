@@ -3,6 +3,7 @@ import VideoItem from "../VideoItem/VideoItem";
 
 const VideoList = ({ videos, onVideoSelect }) => {
   const renderedList = videos.map((video) => {
+    if (video.id.videoId === undefined) return null;
     return (
       <VideoItem
         key={video.id.videoId}
