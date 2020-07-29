@@ -1,9 +1,21 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { reduxForm } from "redux-form";
 import { createPost } from "../actions/index";
 import { Link } from "react-router";
 
 class PostsNew extends Component {
+  static contextTypes = {
+    router: PropTypes.object,
+  };
+
+  onSubmit = (values) => {
+    this.props.createPost(values).then(() => {
+      // blog has been created, navigate to root
+      this.context.router.push("/");
+    });
+  };
+
   render() {
     const {
       fields: { title, categories, content },
@@ -11,7 +23,7 @@ class PostsNew extends Component {
     } = this.props;
 
     return (
-      <form onSubmit={handleSubmit(this.props.createPost)}>
+      <form onSubmit={handleSubmit(this.onSubmit)}>
         <h3>Create A New Post</h3>
         <div
           className={`form-group ${
